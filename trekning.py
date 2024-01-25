@@ -2,16 +2,20 @@ import random
 import time
 
 def lesInnFraFil():
-    f = open('deltakere.txt', 'r')
-    liste = f.readlines()
-    antall = len(liste)
-    print("Importert", antall, "deltakere fra fil...\n")
-    f.close()
-    # lager ryddig liste uten linjeskift
-    i = 0
-    while i < len(liste):
-        liste[i] = liste[i].strip()
-        i += 1
+    try:
+        f = open('deltakere.txt', 'r')
+        liste = f.readlines()
+        antall = len(liste)
+        print("\nImportert", antall, "deltakere fra fil.\n")
+        f.close()
+        # lager ryddig liste uten linjeskift
+        i = 0
+        while i < len(liste):
+            liste[i] = liste[i].strip()
+            i += 1
+    except:
+        print("\nEn feil oppstod ved lesing av deltakere.txt\n")
+        exit()
     return liste
 
 def omrokkerListe(liste):
