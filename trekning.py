@@ -13,7 +13,7 @@ def lesInnFraFil():
         while i < len(liste):
             liste[i] = liste[i].strip()
             i += 1
-    except:
+    except IOError:
         print("\nEn feil oppstod ved lesing av deltakere.txt\n")
         exit()
     return liste
