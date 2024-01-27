@@ -1,6 +1,12 @@
 import random
 import time
 
+
+def main():
+    while True:
+        visMeny()
+
+
 def lesInnFraFil():
     try:
         f = open('deltakere.txt', 'r')
@@ -18,9 +24,11 @@ def lesInnFraFil():
         exit()
     return liste
 
+
 def omrokkerListe(liste):
     omrokkertListe = random.shuffle(liste)
     return omrokkertListe
+
 
 def trekkVinner():
     antall = len(deltakerliste) - 1
@@ -28,6 +36,7 @@ def trekkVinner():
     print("\nVinneren er... \n")
     time.sleep(1)
     print("\t", deltakerliste[vinnerrad], "\n")
+
 
 def visMeny():
     menyvalg = input("[D]eltakere, [T]rekning, [A]vslutt: ")
@@ -45,7 +54,4 @@ def visMeny():
 
 
 deltakerliste = lesInnFraFil()
-
-start = True
-while start:
-    visMeny()
+main()
