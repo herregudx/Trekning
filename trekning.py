@@ -7,9 +7,9 @@ def main():
         visMeny()
 
 
-def lesInnFraFil():
+def lesInnFraFil(filnavn):
     try:
-        f = open('deltakere.txt', 'r')
+        f = open(filnavn, 'r')
         liste = f.readlines()
         antall = len(liste)
         print("\nImportert", antall, "deltakere fra fil.\n")
@@ -26,33 +26,37 @@ def lesInnFraFil():
 
 
 def omrokkerListe(liste):
-    omrokkertListe = random.shuffle(liste)
-    return omrokkertListe
+    print("\nStokker om på listen over deltakere...")
+    time.sleep(1)
+    random.shuffle(liste)
 
 
-def trekkVinner():
-    antall = len(deltakerliste) - 1
+def trekkVinner(liste):
+    print("\nTrekker en vinner...")
+    antall = len(liste) - 1
     vinnerrad = random.randint(0, antall)
     print("\nVinneren er... \n")
     time.sleep(1)
-    print("\t", deltakerliste[vinnerrad], "\n")
+    print("\t", liste[vinnerrad], "\n")
+
+
+def visDeltakere(liste):
+    print("\nHer er listen over deltakere:")
+    print(liste)
+    print("\n")
 
 
 def visMeny():
     menyvalg = input("[D]eltakere, [T]rekning, [A]vslutt: ")
     if menyvalg.upper() == "D":
-        print("\nHer er listen over deltakere:")
-        print(deltakerliste)
-        print("\n")
+        visDeltakere(deltakerliste)
     elif menyvalg.upper() == "T":
-        print("\nStokker om på listen over deltakere og trekker en vinner...")
         omrokkerListe(deltakerliste)
-        time.sleep(1)
-        trekkVinner()
+        trekkVinner(deltakerliste)
     elif menyvalg.upper() == "A":
         exit()
 
 
 if __name__=="__main__": 
-    deltakerliste = lesInnFraFil()
+    deltakerliste = lesInnFraFil("deltakere.txt")
     main()
