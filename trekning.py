@@ -53,5 +53,6 @@ def visMeny():
         exit()
 
 
-deltakerliste = lesInnFraFil()
-main()
+if __name__=="__main__": 
+    deltakerliste = lesInnFraFil()
+    main()
