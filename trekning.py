@@ -3,8 +3,16 @@ import time
 
 
 def main():
+    deltakerliste = lesInnFraFil("deltakere.txt")
     while True:
-        visMeny()
+        menyvalg = input("[D]eltakere, [T]rekning, [A]vslutt: ")
+        if menyvalg.upper() == "D":
+            visDeltakere(deltakerliste)
+        elif menyvalg.upper() == "T":
+            omrokkerListe(deltakerliste)
+            trekkVinner(deltakerliste)
+        elif menyvalg.upper() == "A":
+            exit()
 
 
 def lesInnFraFil(filnavn):
@@ -35,9 +43,8 @@ def trekkVinner(liste):
     print("\nTrekker en vinner...")
     antall = len(liste) - 1
     vinnerrad = random.randint(0, antall)
-    print("\nVinneren er... \n")
     time.sleep(1)
-    print("\t", liste[vinnerrad], "\n")
+    print(f"\nVinneren er: {liste[vinnerrad]}!\n")
 
 
 def visDeltakere(liste):
@@ -46,17 +53,5 @@ def visDeltakere(liste):
     print("\n")
 
 
-def visMeny():
-    menyvalg = input("[D]eltakere, [T]rekning, [A]vslutt: ")
-    if menyvalg.upper() == "D":
-        visDeltakere(deltakerliste)
-    elif menyvalg.upper() == "T":
-        omrokkerListe(deltakerliste)
-        trekkVinner(deltakerliste)
-    elif menyvalg.upper() == "A":
-        exit()
-
-
 if __name__=="__main__": 
-    deltakerliste = lesInnFraFil("deltakere.txt")
     main()
